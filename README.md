@@ -26,3 +26,28 @@ Then: `terraform init` and `terraform apply`.
 | `integration_name` | String | Name of integration with AWS      | Yes       |            |
 | `blueprint_name`   | String | Name of blueprint for project     | Yes       |            |
 | `blueprint_grid`   | String | Grid size for generated blueprint | No        | `standard` |
+
+
+## Credentials: using CloudCraft provider
+
+You must specify a set of credentials for the CloudCraft provider to be able to talk to the CloudCraft API. These can be specified as environment variables using something like the below [in your `.envrc`](https://direnv.net/) or similar.
+
+```bash
+export CLOUDCRAFT_APITOKEN=your-api-token
+export CLOUDCRAFT_HOST=api.cloudcraft.co
+```
+
+They can also be specified using the provider variable syntax in your `providers.tf` or `terraform.tf`, but since you will probably commit your Terraform config to a version control system like git, and since these credentials are secret, that is not recommended.
+
+## Resources: what does this module do?
+
+The module will create the following:
+
+* An IAM role with ReadOnlyAccess permissions for CloudCraft to use.
+* An AWS integration in CloudCraft, allowing it to view resources in this account.
+* A CloudCraft blueprint which you can then use this integration with.
+
+
+## Future Ideas
+
+* Allow 0 or more blueprints to be created, rather than just one.

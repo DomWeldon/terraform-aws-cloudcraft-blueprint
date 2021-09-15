@@ -11,7 +11,7 @@ To use this module, include something like the below in your Tetrraform project 
 ```hcl
 module "cloudcraft" {
   // you should use a tagged version here
-  source = "https://github.com/DomWeldon/terraform-aws-cloudcraft-blueprint"
+  source = "git@github.com:DomWeldon/terraform-aws-cloudcraft-blueprint.git?ref=tags/v0.1.1"
   integration_name = "my-project-integration"
   blueprint_name = "my-project-blueprint"
 }
